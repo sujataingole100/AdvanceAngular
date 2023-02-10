@@ -1,0 +1,83 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col" [ngClass]="isSidePannel?'col-md-8':'col-md-12'">
+      <div class="card">
+        <div class="card-header bg-info">
+          <div class="row">
+            <div class="col">
+              <h6>User</h6>
+            </div>
+            <div class="col text-end">
+              <button class="btn btn-success" (click)="Add()">Add</button>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+               <table class="table table-bordered">
+                 <thead>
+                  <tr>
+                    <td>Sr No.</td>
+                    <td>userName</td>
+                    <td>userRole</td>
+                    <td>userPassword</td>
+                    <td>Action</td>
+                  </tr>
+                 </thead>
+                 <tbody>
+                  <tr *ngFor="let item of usersArray;let i=index">
+                    <td>{{i+1}}</td>
+                    <td>{{item.userName}}</td>
+                    <td>{{item.userRole}}</td>
+                    <td>{{item.userPassword}}</td>
+                    <td>
+                      <button class="btn btn-success me-2" (click)="OnEdit(item)">Edit</button>
+                      <button class="btn btn-danger me-2" (click)="OnDelete(item)">Delete</button>
+                    </td>
+                  </tr>
+                 </tbody>
+               </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col" [ngClass]="isSidePannel?'col-md-4':'d-none'">
+      <div class="row">
+        <div class="col">
+          <div class="form">
+            <div class="card">
+              <div class="card-header bg-info">
+                User Form
+              </div>
+              <div class="card-body">
+                <div class="row">
+                  <div class="col">
+                     <label for="">userName</label>
+                     <input type="text" name="userName" id="" [(ngModel)]="usersObj.userName" placeholder="userName" class="form-control">
+                  </div>
+                  <div class="col">
+                    <label for="">userRole</label>
+                    <input type="text" name="userRole" id="" [(ngModel)]="usersObj.userRole" placeholder="userRole" class="form-control">
+                 </div>
+                 <div class="col">
+                  <label for="">userPassword</label>
+                  <input type="password" name="userPassword" id="" [(ngModel)]="usersObj.userPassword" placeholder="userPassword" class="form-control">
+               </div>
+                </div>
+                <div class="row mt-2">
+                  <div class="col">
+                    <button class="btn btn-success me-2" (click)="AddUser()" *ngIf="usersObj.userId===0">AddUser</button>
+                    <button class="btn btn-success me-2" (click)="Update()" *ngIf="usersObj.userId!==0">Update</button>
+                    <button class="btn btn-danger" (click)="close()">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

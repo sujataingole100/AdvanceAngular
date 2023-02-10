@@ -1,0 +1,70 @@
+<div class="card-body border-5 border-dark">
+  <div class="row">
+    <div class="col-md-12 p-4 text-center border-dark border-5">
+      <table class="table table-bordered border-5 border-dark  ">
+        <thead class="fw-bold ">
+          <tr>
+            <th>Sr.no</th>
+            <th>Candidate Name</th>
+            <th>Contact</th>
+            <th>E-mail</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody [formGroup]="form">
+          <tr *ngFor="let item of enquiryArray; let mySr = index">
+            <td>{{mySr+1}}</td>
+            <td (dblclick)="onEdit(item,'fname')">
+              <div class="row" *ngIf="item.editFieldName=='fname'">
+                <div class="col-lg-8">
+                  <input type="text" name="" id="" formControlName="fname" placeholder="FirstName" class="form-control">
+                </div>
+                <div class="col-lg-4">
+                  <i class="bi bi-check2" (click)="OnUpdate()"></i>
+                  <i class="bi bi-x" (click)="close(item)"></i>
+                </div>
+              </div>
+              <div *ngIf="item.editFieldName!='fname'">
+                {{item.name | titlecase}}
+              </div>
+            </td>
+            <td (dblclick)="onEdit(item,'cno')">
+              <div class="row" *ngIf="item.editFieldName=='cno'">
+                <div class="col-lg-8">
+                  <input type="text" name="" id="" formControlName="contactNo" placeholder="contactNo" class="form-control">
+                </div>
+                <div class="col-lg-4">
+                  <i class="bi bi-check2" (click)="OnUpdate()"></i>
+                  <i class="bi bi-x" (click)="close(item)"></i>
+                </div>
+              </div>
+              <div  *ngIf="item.editFieldName!='cno'">
+                {{item.contactNo}}
+              </div>
+            </td>
+            <td (dblclick)="onEdit(item,'email')">
+              <div class="row" *ngIf="item.editFieldName=='email'">
+                <div class="col-lg-8">
+                  <input type="text" name="" id="" formControlName="email" placeholder="email" class="form-control">
+                </div>
+                <div class="col-lg-4">
+                  <i class="bi bi-check2" (click)="OnUpdate()"></i>
+                  <i class="bi bi-x" (click)="close(item)"></i>
+                </div>
+              </div>
+              <div *ngIf="item.editFieldName!='email'">
+                {{item.email}}
+              </div>
+            </td>
+            <td>
+              <div *ngIf="item.isEdit">
+                <button class="btn btn-secondary btn-sm" (click)="OnUpdate()">update</button>
+                <button class="btn btn-secondary btn-sm" (click)="item.isEdit=false">Cancel</button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

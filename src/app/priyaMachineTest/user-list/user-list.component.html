@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      User Data
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Sr No</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Status</th>
+                <th>DateOfBirth</th>
+                <th>Address</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of gridArray; let srNo=index" [ngClass]="{'bg-primary':item.Status=='Pending','bg-info':item.Status=='Approved','bg-danger':item.Status=='Rejected'}">
+                <td>{{srNo+1}}</td>
+                <td>{{item.FirstName}} {{item.LastName}}</td>
+                <td>{{item.Email}}</td>
+                <td>{{item.Phone}}</td>
+                <td>{{item.Status}}</td>
+                <td>{{item.DateOfBirth}}</td>
+                <td>{{item.Address.Country}}-{{item.Address.State}}-{{item.Address.City}}</td>
+                <td>
+                  <button class="btn btn-success me-2" (click)="OnEdit(item.Phone)">Edit</button>
+                  <button class="btn btn-danger" (click)="OnDelete(item.Phone)">Delete</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

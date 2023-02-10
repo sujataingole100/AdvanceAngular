@@ -1,0 +1,75 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="card">
+        <div class="card-header">
+          Reactive Form Crud Operation
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <div class="form" [formGroup]="form">
+                <div class="row">
+                  <div class="col-lg-6 mb-3">
+                    <input type="text" name="" id="" formControlName="fname" class="form-control" placeholder="First Name">
+                  </div>
+                  <div class="col-lg-6 mb-3">
+                    <input type="text" name="" id="" formControlName="lname" class="form-control" placeholder="Last Name">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-6">
+                    <input type="text" name="" id="" formControlName="mono" class="form-control" placeholder="Mobile Number">
+                  </div>
+                  <div class="col-lg-6">
+                    <input type="email" name="" id="" formControlName="email" class="form-control" placeholder="Email Id">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-6 mt-3">
+                   <button class="btn btn-success me-3" (click)="OnSave()" *ngIf="form.controls['studID'].value===0">Save</button>
+                   <button class="btn btn-success me-3" (click)="OnSave()" *ngIf="form.value.studID!==0">Update</button>
+                   <button class="btn btn-danger" (click)="OnCancel()">Cancel</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="row mt-5">
+    <div class="col">
+      <div class="card">
+        <div class="card-header">
+          Student Record
+        </div>
+        <div class="card-body">
+          <table class="table table-bordered">
+            <tr>
+              <th>Sr No</th>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Mobile No</th>
+              <th>Email Id</th>
+              <th>Action</th>
+             </tr>
+             <tr *ngFor="let item of studentArray;let i=index">
+              <td>{{i+1}}</td>
+              <td>{{item.fname}}</td>
+              <td>{{item.lname}}</td>
+              <td>{{item.mono}}</td>
+              <td>{{item.email}}</td>
+              <td>
+                <button class="btn btn-info" (click)="OnEdit(item.studID)">Edit</button>
+                <button class="btn btn-danger" (click)="OnDelete(item.studID)">Delete</button>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

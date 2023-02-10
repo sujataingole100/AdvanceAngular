@@ -1,0 +1,125 @@
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      <h6 class="text-center">User Form</h6>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col">
+          <form action="" [formGroup]="userForm">
+            <div class="row">
+              <div class="col-md">
+                <label for="">FirstName</label>
+                <input type="text" name="" id="" formControlName="FirstName" class="form-control">
+                <div class="text-danger" *ngIf="userForm.controls['FirstName'].touched">
+                  <span *ngIf="userForm.controls['FirstName'].errors?.['required']">This Field Is Required</span>
+                </div>
+              </div>
+              <div class="col-md">
+                <label for="">LastName</label>
+                <input type="text" name="" id="" formControlName="LastName" class="form-control">
+                <div class="text-danger" *ngIf="userForm.controls['LastName'].touched">
+                  <span *ngIf="userForm.controls['LastName'].errors?.['required']">This Field Is Required</span>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md">
+                <label for="">Email</label>
+                <input type="email" name="" id="" formControlName="Email" class="form-control">
+                <div class="text-danger" *ngIf="userForm.controls['Email'].touched">
+                  <span *ngIf="userForm.controls['Email'].errors?.['required']">This Field Is Required</span>
+                </div>
+              </div>
+              <div class="col-md">
+                <label for="">Phone</label>
+                <input type="text" name="" id="" formControlName="Phone" class="form-control">
+                <div class="text-danger" *ngIf="userForm.controls['Phone'].touched">
+                  <span *ngIf="userForm.controls['Phone'].errors?.['required']">This Field Is Required</span>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md">
+                <label for="">Status</label>
+                <select name="" id="" formControlName="Status" class="form-control">
+                  <option value="" selected>Select</option>
+                  <option value="Pending">Pending</option>
+                  <option value="Approved">Approved</option>
+                  <option value="Rejected">Rejected</option>
+                </select>
+                <div class="text-danger" *ngIf="userForm.controls['Status'].touched">
+                  <span *ngIf="userForm.controls['Status'].errors?.['required']">This Field Is Required</span>
+                </div>
+              </div>
+              <div class="col-md">
+                <label for="">DateOfBirth</label>
+                <input type="date" name="" id="" formControlName="DateOfBirth" class="form-control">
+                <div class="text-danger" *ngIf="userForm.controls['DateOfBirth'].touched">
+                  <span *ngIf="userForm.controls['DateOfBirth'].errors?.['required']">This Field Is Required</span>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md">
+                <label for="">Password</label>
+                <input type="password" name="" id="" formControlName="Password" class="form-control">
+                <div class="text-danger" *ngIf="userForm.controls['Password'].touched">
+                  <span *ngIf="userForm.controls['Password'].errors?.['required']">This Field Is Required</span>
+                </div>
+              </div>
+            </div>
+            <div class="row" formGroupName="Address">
+              <div class="col-md">
+                <label for="">Country</label>
+                <select name="" id="" formControlName="Country" class="form-control">
+                  <option value="" selected>Select</option>
+                  <option value="India">India</option>
+                  <option value="Japan">Japan</option>
+                  <option value="America">America</option>
+                  <option value="France">France</option>
+                </select>
+                <div class="text-danger" *ngIf="userForm.get('Address.Country')?.touched">
+                  <span *ngIf="userForm.get('Address.Country')?.errors?.['required']">This Field Is Required</span>
+                </div>
+              </div>
+              <div class="col-md">
+                <label for="">State</label>
+                <select name="" id="" formControlName="State" class="form-control">
+                  <option value="" selected>Select</option>
+                  <option value="Maharashtra">Maharashtra</option>
+                  <option value="Gujrat">Gujrat</option>
+                  <option value="Washigton">Washigton</option>
+                  <option value="Paris">Paris</option>
+                </select>
+                <div class="text-danger" *ngIf="userForm.get('Address.State')?.touched">
+                  <span *ngIf="userForm.get('Address.State')?.errors?.['required']">This Field Is Required</span>
+                </div>
+              </div>
+              <div class="col-md">
+                <label for="">City</label>
+                <select name="" id="" formControlName="City" class="form-control">
+                  <option value="" selected>Select</option>
+                  <option value="Pune">Pune</option>
+                  <option value="Solapur">Solapur</option>
+                  <option value="Hydrabad">Hydrabad</option>
+                  <option value="Nashik">Nashik</option>
+                </select>
+                <div class="text-danger" *ngIf="userForm.get('Address.City')?.touched">
+                  <span *ngIf="userForm.get('Address.City')?.errors?.['required']">This Field Is Required</span>
+                </div>
+              </div>
+            </div>
+            <div class="row mt-2">
+              <div class="col">
+                <button class="btn btn-success me-2" (click)="OnSave()">Add</button>
+                <button class="btn btn-danger" (click)="OnClear()">Clear</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

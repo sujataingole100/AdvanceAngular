@@ -1,0 +1,43 @@
+ <div >
+  <ng-container></ng-container>
+
+</div>
+ <button class="btn btn-primary" *ngFor="let item of enrollmentList" (click)=openLedger(item.candidateId) >OpenLedger</button>
+ <!-- <div class="card-body border-5 border-dark">
+  <div class="row">
+    <div class="col-md-12 p-4 text-center border-dark border-5">
+      <table class="table table-bordered border-5 border-dark  ">
+        <thead class="fw-bold ">
+          <tr>
+            <label>courseName</label>
+            <th>Candidate Name</th>
+            <th>contactNo</th>
+            <th>CourseFee</th>
+            <th>Contact</th>
+            <th>E-mail</th>
+            <th>enrollmentNo</th>
+            <th>Enroll.Date</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of enrollmentArrayByID; let mySr = index">
+              <label>{{item.courseName}}</label>
+              <td>{{item.courseName}}</td>
+              <td>{{item.name | titlecase}}</td>
+              <td>{{item.contactNo}}</td>
+              <td>{{item.email}}</td>
+              <td>{{item.enrollmentNo}}</td>
+              <td>{{item.enrollmentDate}}</td>
+              <label for=""></label>
+         </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div> -->
+
+
+ <span *ngFor="let item of enrollmentArrayByID; let mySr = index">
+    <label>courseName:{{item.courseName}}</label>
+
+

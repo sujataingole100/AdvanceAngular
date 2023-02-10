@@ -1,0 +1,128 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col" [ngClass]="isSidePannel?'col-md-8':'col-md-12'">
+      <div class="card">
+        <div class="card-header bg-light">
+          <div class="row">
+            <div class="col-md-6">
+              <h6>Client</h6>
+            </div>
+            <div class="col-md-6 text-end">
+              <button class="btn btn-success" (click)="Add()">Add</button>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <td>Sr No</td>
+                <td>clientName</td>
+                <td>businessName</td>
+                <td>contactPerson</td>
+                <td>contactNo</td>
+                <td>altContactNo</td>
+                <td>email</td>
+                <td>Action</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of clientArray;let i=index">
+                <td>{{i+1}}</td>
+                <td>{{item.clientName}}</td>
+                <td>{{item.businessName}}</td>
+                <td>{{item.contactPerson}}</td>
+                <td>{{item.contactNo}}</td>
+                <td>{{item.altContactNo}}</td>
+                <td>{{item.email}}</td>
+                <td>
+                  <button class="btn btn-success me-2" (click)="Edit(item)">Edit</button>
+                  <button class="btn btn-danger" (click)="delete(item.clientId)">Delete</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="col" [ngClass]="isSidePannel?'col-md-4':'d-none'">
+      <div class="card">
+        <div class="card-header">
+          <h6>Client Form</h6>
+        </div>
+        <div class="card-body">
+          <form action="" [formGroup]="form">
+            <div class="row">
+              <div class="col">
+                <label for="">Client Name</label>
+                <input type="text" name="clientName" id=""  formControlName="clientName" class="form-control"
+                  placeholder="Client Name">
+                  <div class="col-lg-12 col-sm-12 col-md-12"  *ngIf="form.controls['clientName'].touched">
+                    <span class="text-danger" *ngIf="form.controls['clientName'].errors?.['required']">clientName is
+                      Required</span>
+                  </div>
+              </div>
+              <div class="col">
+                <label for="">Business Name</label>
+                <input type="text" name="businessName" id="" formControlName="businessName" class="form-control"
+                  placeholder="Business Name">
+                  <div class="col-lg-12 col-sm-12 col-md-12" *ngIf="form.controls['businessName'].touched">
+                    <span class="text-danger" *ngIf="form.controls['businessName'].errors?.['required']">businessName  is
+                      Required</span>
+                  </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <label for="">Contact Person</label>
+                <input type="text" name="contactPerson" id="" formControlName="contactPerson" class="form-control"
+                  placeholder="Contact Person">
+                  <div class="col-lg-12 col-sm-12 col-md-12" *ngIf="form.controls['contactPerson'].touched">
+                    <span class="text-danger" *ngIf="form.controls['contactPerson'].errors?.['required']">contactPerson is
+                      Required</span>
+                  </div>
+              </div>
+              <div class="col">
+                <label for="">Contact No</label>
+                <input type="text" name="contactNo" id="" formControlName="contactNo" class="form-control"
+                  placeholder="contactNo">
+                  <div class="col-lg-12 col-sm-12 col-md-12" *ngIf="form.controls['contactNo'].touched">
+                    <span class="text-danger" *ngIf="form.controls['contactNo'].errors?.['required']">contactNo is
+                      Required</span>
+                  </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <label for="">altContactNo</label>
+                <input type="text" name="altContactNo" id="" formControlName="altContactNo" class="form-control"
+                  placeholder="altContactNo">
+                  <div class="col-lg-12 col-sm-12 col-md-12" *ngIf="form.controls['altContactNo'].touched">
+                    <span class="text-danger" *ngIf="form.controls['altContactNo'].errors?.['required']">altContactNo is
+                      Required</span>
+                  </div>
+              </div>
+              <div class="col">
+                <label for="">Contact No</label>
+                <input type="email" name="email" id="" formControlName="email" class="form-control"
+                  placeholder="email">
+                  <div class="col-lg-12 col-sm-12 col-md-12" *ngIf="form.controls['email'].touched">
+                    <span class="text-danger" *ngIf="form.controls['email'].errors?.['required']">email is
+                      Required</span>
+                  </div>
+              </div>
+            </div>
+            <div class="row mt-2">
+              <div class="col">
+                <button class="btn btn-success" (click)="OnAdd()" *ngIf="form.controls['clientId'].value===0" [disabled]="form.invalid">Add</button>
+                <button class="btn btn-success" (click)="OnUpdate()" *ngIf="form.controls['clientId'].value!==0">Update</button>
+                <button class="btn btn-danger ms-2" (click)="Close()">Close</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

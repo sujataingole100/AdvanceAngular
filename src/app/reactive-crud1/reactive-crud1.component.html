@@ -1,0 +1,85 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col" [ngClass]="isSidePaneel?'col-md-7':'col-md-12'">
+      <div class="card">
+        <div class="card-header bg-info">
+          <div class="row">
+            <div class="col-md-2">
+              <h6>Course</h6>
+            </div>
+            <div class="col-md-10 text-end">
+              <button class="btn btn-warning" (click)="Add()">Add</button>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <td>Sr No</td>
+                <td>courseName</td>
+                <td>Name</td>
+                <td>ContactNo</td>
+                <td>Email</td>
+                <td>Action</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of courseArray;let i=index">
+                <td>{{i+1}}</td>
+                <td>{{item.courseName}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.contactNo}}</td>
+                <td>{{item.email}}</td>
+                <td>
+                  <button class="btn btn-success me-2" (click)="Edit(item)">Edit</button>
+                  <button class="btn btn-danger" (click)="Delete(item)">Delete</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+    <div class="col" [ngClass]="isSidePaneel?'col-md-4':'d-none'">
+      <div class="card">
+        <div class="card-header bg-warning">
+          <h6>Add Course</h6>
+        </div>
+        <div class="card-body">
+          <form action="" [formGroup]="courseForm">
+            <div class="row">
+              <div class="col">
+                <label for="">courseName</label>
+                <input type="text" name="" id="" formControlName="courseName" placeholder="courseName"
+                  class="form-control">
+              </div>
+              <div class="col">
+                <label for="">Name</label>
+                <input type="text" name="" id="" formControlName="name" placeholder="name" class="form-control">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <label for="">ContactNo</label>
+                <input type="text" name="" id="" formControlName="contactNo" placeholder="contactNo"
+                  class="form-control">
+              </div>
+              <div class="col">
+                <label for="">Email</label>
+                <input type="email" name="" id="" formControlName="email" placeholder="email" class="form-control">
+              </div>
+            </div>
+            <div class="row mt-2">
+              <div class="col">
+                <button class="btn btn-success me-2" (click)="AddCourse()">AddCourse</button>
+                <button class="btn btn-success me-2" (click)="UpdateCourse()">UpdateCourse</button>
+                <button class="btn btn-danger" (click)="close()">close</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

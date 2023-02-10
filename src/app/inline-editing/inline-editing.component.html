@@ -1,0 +1,74 @@
+ <div class="card-body border-5 border-dark">
+  <div class="row">
+    <div class="col-md-12 p-4 text-center border-dark border-5">
+      <table class="table table-bordered border-5 border-dark  ">
+        <thead class="fw-bold ">
+          <tr>
+            <th>Sr.no</th>
+            <th>Candidate Name</th>
+            <th>Contact</th>
+            <th>E-mail</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of enquiryArray; let mySr = index">
+            <td>{{mySr+1}}</td>
+            <td>
+              <div *ngIf="item.isEdit">
+                <input type="text" name="" id="" formControlName="fname" placeholder="FirstName" class="form-control">
+              </div>
+              <div *ngIf="!item.isEdit">
+                {{item.name}}
+              </div>
+            </td>
+            <td>
+              <div *ngIf="item.isEdit">
+                <input type="text" name="" id="" formControlName="cno" placeholder="contactNo" class="form-control">
+              </div>
+              <div *ngIf="!item.isEdit">
+                {{item.contactNo}}
+              </div>
+            </td>
+            <td>
+              <div *ngIf="item.isEdit">
+                <input type="text" name="" id="" formControlName="email" placeholder="email" class="form-control">
+              </div>
+              <div *ngIf="!item.isEdit">
+                {{item.email}}
+              </div>
+            </td>
+            <td>
+              <div *ngIf="item.isEdit">
+                <button class="btn btn-secondary btn-sm" (click)="OnUpdate()">update</button>
+                <button class="btn btn-secondary btn-sm" (click)="item.isEdit=false">Cancel</button>
+              </div>
+              <div *ngIf="!item.isEdit">
+                <button class="btn btn-secondary btn-sm" (click)="onEdit(item)">Edit</button>
+              </div>
+
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+ <!-- <div class="cotainer">
+  <div class="card">
+    <div class="card-body">
+      {{enrollmentArray|json}}
+      <table class="table">
+        <thead></thead>
+        <tbody>
+          <tr>
+           <td>{{enrollmentArray.courseName}}</td>
+           <td>{{enrollmentArray.email}}</td>
+           <td>{{enrollmentArray.enrollmentNo}}</td>
+           <td>{{enrollmentArray.name}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div> -->

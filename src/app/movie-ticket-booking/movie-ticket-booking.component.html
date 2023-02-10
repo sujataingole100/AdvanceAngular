@@ -1,0 +1,64 @@
+<div class="container">
+<div class="card">
+  <div class="card-body">
+    <div class="row mt-3">
+      <div class="col-lg-6">
+        <label for="">Movie</label>
+        <select name="movie" id="" [(ngModel)]="movieObj.movie" class="form-control" (change)="selectMovie(movieObj.movie);">
+          <option value="" selected>movie Name</option>
+          <option [value]="item.name" *ngFor="let item of movieArray">{{item.name}}</option>
+        </select>
+      </div>
+      <div class="col-lg-6">
+        <label for="">Time Slot</label>
+        <select name="timeSlot" id="" [(ngModel)]="movieObj.timeSlot" class="form-control">
+          <option value="" selected>Time Slot</option>
+          <option [value]="item" *ngFor="let item of newArray.time" >{{item}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-lg-6">
+        <label for="">No Of Tickets</label>
+        <input name="noOfTickets" type="text" id="" [(ngModel)]="movieObj.noOfTickets" class="form-control"/>
+      </div>
+      <div class="col-lg-6">
+        <label for="">Total Amount</label>
+        <input name="totalAmount" type="text" id="" [(ngModel)]="movieObj.totalAmount" class="form-control" (click)="totalAmunt()"/>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-lg-6">
+       <button class="btn btn-danger" (click)="reset()">Reset</button>
+      </div>
+      <div class="col-lg-6">
+        <button class="btn btn-success" (click)="bookTicket()">BookTicket</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    Booked Tickets
+  </div>
+  <div class="card-body">
+   <table class="table table-bordered">
+    <tr>
+      <th>Sr No</th>
+      <th>movie</th>
+      <th>timeSlot</th>
+      <th>noOfTickets</th>
+      <th>totalAmount</th>
+    </tr>
+    <tr *ngFor="let item of ticketArray;let i=index">
+      <td>{{i+1}}</td>
+      <td>{{item.movie}}</td>
+      <td>{{item.timeSlot}}</td>
+      <td>{{item.noOfTickets}}</td>
+      <td>{{item.totalAmount}}</td>
+    </tr>
+   </table>
+  </div>
+</div>
+</div>

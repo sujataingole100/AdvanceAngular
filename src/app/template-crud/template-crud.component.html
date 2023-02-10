@@ -1,0 +1,67 @@
+<div class="container-fluid mt-5">
+  <div class="row">
+    <form action="">
+      <div class="row ms-2">
+        <div class="col-md-2">
+          <label for="">Filter</label>
+          <input type="text" name="search" id="" [(ngModel)]="search" (ngModelChange)="OnFilter($event)" class="form-control">
+        </div>
+      </div>
+      </form>
+    <div class="row">
+      <div class="col text-end">
+        <button class="btn btn-success me-2" (click)="add()">Add</button>
+      </div>
+    </div>
+    <div class="col" [ngClass]="isSidePannel?'col-md-8':'col-md-12'">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <td (click)="sort('EmployeeId')">EmployeeId</td>
+            <td (click)="sort('EmployeeName')">EmployeeName</td>
+            <td (click)="sort('ContactNo')">ContactNo</td>
+            <td (click)="sort('EmailId')">EmailId</td>
+            <td>Action</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of FilteredEmployeArray">
+            <td>{{item.EmployeeId}}</td>
+            <td>{{item.EmployeeName}}</td>
+            <td>{{item.ContactNo}}</td>
+            <td>{{item.EmailId}}</td>
+            <td>
+              <button class="btn btn-success me-2" (click)="editEmp(item)">Edit</button>
+              <button class="btn btn-danger" (click)="delete(item.EmployeeId)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col" [ngClass]="isSidePannel?'col-md-4':'d-none'">
+      <form class="form">
+        <div class="row">
+          <div class="col">
+            <label for="">EmployeeName</label>
+            <input type="text" name="EmployeeName" id="" [(ngModel)]="employeeObj.EmployeeName" class="form-control">
+          </div>
+          <div class="col">
+            <label for="">ContactNo</label>
+            <input type="text" name="ContactNo" id="" [(ngModel)]="employeeObj.ContactNo" class="form-control">
+          </div>
+          <div class="col">
+            <label for="">EmailId</label>
+            <input type="email" name="EmailId" id="" [(ngModel)]="employeeObj.EmailId" class="form-control">
+          </div>
+        </div>
+        <div class="row mt-2">
+          <div class="col">
+            <button class="btn btn-success me-2" *ngIf="employeeObj.EmployeeId===0" (click)="addEmp()" >Add</button>
+            <button class="btn btn-success me-2" *ngIf="employeeObj.EmployeeId!==0"  (click)="updateEmp()" >Update</button>
+            <button class="btn btn-danger" (click)="cancel()">Cancel</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
