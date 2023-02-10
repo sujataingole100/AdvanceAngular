@@ -8,7 +8,9 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class ReactiveCrud2Component implements OnInit {
   form: FormGroup;
-  clientArray: any[] = []
+  clientArray: any[] = [];
+  sortby: string = '';
+  findName:string='';
   isSidePannel: boolean = false;
   emailRegEx = '^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$';
   constructor() {
@@ -81,5 +83,21 @@ export class ReactiveCrud2Component implements OnInit {
       }
       localStorage.setItem('clientOBJ', JSON.stringify(this.clientArray));
     }
+  }
+  sortbyfunc() {
+    debugger
+    if (this.sortby == "clientName") {
+      const filteredData = this.clientArray.sort((a:any, b: any) => a.clientName.localeCompare(b.clientName))
+      this.clientArray = filteredData;
+    }
+    if (this.sortby == "businessName") {
+      const filteredData = this.clientArray.sort((a:any, b: any) => a.businessName.localeCompare(b.businessName))
+      this.clientArray = filteredData;
+    }
+  }
+  searchdata() {
+    debugger
+    let filteredData = this.clientArray.filter((m: any) => m.clientName.toLocaleLowerCase().startsWith(this.findName.toLocaleLowerCase()),);
+    this.clientArray = filteredData;
   }
 }

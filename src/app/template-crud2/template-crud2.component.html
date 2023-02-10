@@ -1,4 +1,10 @@
 <div class="container-fluid">
+  <div class="row ms-2">
+    <div class="col-md-2">
+      <label for="">Filter</label>
+      <input type="text" name="search" id="" [(ngModel)]="search" (ngModelChange)="OnFilter($event)" class="form-control">
+    </div>
+  </div>
   <div class="row">
     <div class="col" [ngClass]="isSidePannel?'col-md-8':'col-md-12'">
       <div class="card">
@@ -17,17 +23,17 @@
             <thead>
               <tr>
                 <td>Sr No</td>
-                <td>clientName</td>
-                <td>businessName</td>
-                <td>contactPerson</td>
-                <td>contactNo</td>
-                <td>altContactNo</td>
-                <td>email</td>
+                <td (click)="sort('clientName')">clientName</td>
+                <td (click)="sort('businessName')">businessName</td>
+                <td (click)="sort('contactPerson')">contactPerson</td>
+                <td (click)="sort('contactNo')">contactNo</td>
+                <td (click)="sort('altContactNo')">altContactNo</td>
+                <td (click)="sort('email')">email</td>
                 <td>Action</td>
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let item of clientArray;let i=index">
+              <tr *ngFor="let item of FilteredclientArray;let i=index">
                 <td>{{i+1}}</td>
                 <td>{{item.clientName}}</td>
                 <td>{{item.businessName}}</td>

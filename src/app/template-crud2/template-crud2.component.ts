@@ -8,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class TemplateCrud2Component implements OnInit {
   clientArray: any[] = []
   clientObj: any;
+  search:string='';
+  FilteredclientArray:any=[]
   isSidePannel: boolean = false;
   constructor() {
     this.clientObj = {
@@ -26,6 +28,7 @@ export class TemplateCrud2Component implements OnInit {
     const localData = localStorage.getItem('clientArray');
     if (localData != null) {
       this.clientArray = JSON.parse(localData);
+      this.FilteredclientArray = JSON.parse(localData);
     }
   }
   OnAdd() {
@@ -74,5 +77,34 @@ export class TemplateCrud2Component implements OnInit {
   }
   Add() {
     this.isSidePannel = true;
+  }
+  OnFilter(event: any) {
+    debugger
+    this.FilteredclientArray = this.clientArray.filter((element:any) => {
+      let search =event;
+      let values = Object.values(element);
+      let flag = false
+      values.forEach((val: any) => {
+        if (val.toString().toLowerCase().indexOf(search) > -1) {
+          flag = true;
+          return;
+        }
+      })
+      if (flag) {
+        return element
+      }
+    });
+  }
+  sortMode:  boolean= true;
+  sort(key : string) {
+    debugger;
+    if(this.sortMode) {
+      this.sortMode = false;
+      this.FilteredclientArray.sort((a: any, b: any) => a[key].localeCompare(b[key]));
+    } else {
+      this.sortMode = true;
+      this.FilteredclientArray.sort((a: any, b: any) => b[key].localeCompare(a[key]));
+    }
+    localStorage.setItem('emp', JSON.stringify(this.clientArray))
   }
 }

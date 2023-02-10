@@ -1,4 +1,18 @@
 <div class="container-fluid">
+  <div class="row mt-4 mb-3">
+    <div class="col-lg-4">
+      <input type="search" class="form-control" name="searchname" (ngModelChange)="searchdata()"
+      [(ngModel)]="findName" placeholder="Search Text" />
+    </div>
+    <div class="col-lg-8 search-box">
+      <!-- <input type="text" class="form-control"  placeholder="Select Sort By" /> -->
+      <select name="sort" placeholder="Select Sort By" class="form-control" style="width: 100%;" [(ngModel)]="sortby" (change)="sortbyfunc()">
+        <option value="clientName">clientName</option>
+        <option value="businessName">businessName</option>
+        <option value="contactPerson">contactPerson</option>
+      </select>
+    </div>
+  </div>
   <div class="row">
     <div class="col" [ngClass]="isSidePannel?'col-md-8':'col-md-12'">
       <div class="card">
